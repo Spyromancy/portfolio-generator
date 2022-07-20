@@ -18,6 +18,7 @@ fs.writeFile('index.html',generatePage(name,github), err=>{
 
 const promptUser = () => {
     return inquirer.prompt([
+        // Name
         {
             type:'input',
             name:'name',
@@ -31,6 +32,7 @@ const promptUser = () => {
                 }
             }
         },
+        // Github
         {
             type:'input',
             name:'github',
@@ -44,10 +46,31 @@ const promptUser = () => {
                 }
             }
         },
+        // About Confirm
+        {
+            type: 'confirm',
+            name: 'confirmAbout',
+            message: 'Would you like to enter some information about yourself for an "About" section?',
+            default: true
+        },
+        // About
         {
             type:'input',
             name:'about',
-            message:'Provide some information about yourself:'
+            message:'Provide some information about yourself:',
+            when: ({confirmAbout}) => confirmAbout
+            /*
+            when: ({confirmAbout}) => {
+                if(confirmAbout) {
+                    return true;
+                }
+                else{
+                    return false;
+                }
+                // shouldn't this just be [ when: ({confirmAbout}) => confirmAbout ]
+                // Answer yes.
+            }
+            */
         }
         ]);
 };
@@ -62,6 +85,7 @@ const promptProject = portfolioData => {
         portfolioData.projects = [];
     }
     return inquirer.prompt([
+        // Project Name
         {
             type:'input',
             name:'name',
@@ -75,6 +99,7 @@ const promptProject = portfolioData => {
                 }
             }
         },
+        // Project Description
         {
             type:'input',
             name:'description',
@@ -88,12 +113,14 @@ const promptProject = portfolioData => {
                 }
             }
         },
+        // Languages Used
         {
             type:'checkbox',
             name:'languages',
             message:'What did you build this project with? (Check all that apply)',
             choices: ['Javascript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
         },
+        // GitHub Link
         {
             type:'input',
             name:'link',
@@ -107,12 +134,14 @@ const promptProject = portfolioData => {
                 }
             }
         },
+        // Feature?
         {
             type:'confirm',
             name:'feature',
             message:'Would you like to feature this project?',
             default: false
         },
+        // Add another?
         {
             type:'confirm',
             name:'confirmAddProject',
