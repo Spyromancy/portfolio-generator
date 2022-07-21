@@ -44,7 +44,7 @@ const promptUser = () => {
                 if (githubInput){
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('Please enter your GitHub username!');
                     return false;
                 }
             }
@@ -97,7 +97,7 @@ const promptProject = portfolioData => {
                 if (projectInput){
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('Please enter the name of the project!');
                     return false;
                 }
             }
@@ -111,7 +111,7 @@ const promptProject = portfolioData => {
                 if (descInput){
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('Please describe the project!');
                     return false;
                 }
             }
@@ -132,7 +132,7 @@ const promptProject = portfolioData => {
                 if (linkInput){
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log("Please enter your project's link!");
                     return false;
                 }
             }
